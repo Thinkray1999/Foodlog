@@ -20,12 +20,12 @@
 
 html, body { background: var(--bg); }
 
-/* 字号整体比健身打卡大一号，长辈看得更清楚 */
+/* 字体用朱雀仿宋；加载不到时用系统里的仿宋，再不行用宋体 */
 body {
   margin: 0;
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
-  font-size: 17px;
+  font-family: "Zhuque Fangsong", "FangSong", "STFangsong", "Songti SC", serif;
+  font-size: 15px;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
 }
@@ -40,27 +40,27 @@ main {
     calc(env(safe-area-inset-left) + 16px);
 }
 
-h1 { font-size: 30px; margin: 8px 0 12px; color: var(--espresso); }
-h2 { font-size: 19px; margin: 0 0 14px; }
+h1 { font-size: 24px; margin: 6px 0 10px; color: var(--espresso); }
+h2 { font-size: 17px; margin: 0 0 12px; }
 
 button, select, input { font: inherit; color: inherit; }
 button { border: none; cursor: pointer; }
 
-.card { background: var(--card); border-radius: 18px; padding: 18px; margin-bottom: 12px; }
-.hint { color: var(--muted); font-size: 15px; margin: 10px 0 0; min-height: 1em; }
-.mini { width: 40px; height: 40px; border-radius: 10px; background: var(--line); font-size: 20px; line-height: 1; font-weight: 700; }
+.card { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+.hint { color: var(--muted); font-size: 13px; margin: 10px 0 0; min-height: 1em; }
+.mini { width: 34px; height: 34px; border-radius: 9px; background: var(--line); font-size: 17px; line-height: 1; font-weight: 700; }
 .mini:disabled { opacity: .35; }
 
 /* ---------- 日期切换 ---------- */
 .day-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-#dayTitle { font-size: 19px; font-weight: 700; }
+#dayTitle { font-size: 17px; font-weight: 700; }
 
 /* ---------- 汇总：一整块浓缩咖啡色 ---------- */
 .summary { background: var(--espresso); color: var(--on-accent); }
 .summary .hint { color: var(--on-accent); opacity: .8; }
 
-.kcal { font-size: 44px; font-weight: 800; line-height: 1.1; }
-.kcal small { font-size: 18px; font-weight: 500; opacity: .8; }
+.kcal { font-size: 36px; font-weight: 800; line-height: 1.1; }
+.kcal small { font-size: 15px; font-weight: 500; opacity: .8; }
 .kcal.over { color: var(--over); }
 
 .bar { height: 10px; background: rgba(255, 250, 244, .18); border-radius: 5px; overflow: hidden; margin-top: 8px; }
@@ -69,13 +69,13 @@ button { border: none; cursor: pointer; }
 .bar-fill.over { background: var(--over); }
 
 .macros { display: grid; gap: 14px; margin-top: 18px; }
-.macro-head { display: flex; justify-content: space-between; font-size: 16px; }
+.macro-head { display: flex; justify-content: space-between; font-size: 14px; }
 .macro-head b { font-weight: 700; }
 .macro-head span { opacity: .8; }
 
 /* ---------- 记一笔 ---------- */
 .seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px; }
-.seg button { padding: 12px 0; border-radius: 10px; background: var(--line); font-weight: 600; }
+.seg button { padding: 10px 0; font-size: 15px; border-radius: 10px; background: var(--line); font-weight: 600; }
 /* 四个餐次各一种「烤色」，从浅到深，像一天从早到晚 */
 .seg button[aria-pressed="true"] { color: var(--on-accent); }
 .seg button:nth-child(1)[aria-pressed="true"] { background: var(--butter); color: var(--text); }
@@ -85,10 +85,10 @@ button { border: none; cursor: pointer; }
 
 .field { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: var(--muted); }
 .field > span:first-child { width: 3.5em; flex-shrink: 0; }
-/* 输入框字号 ≥16px，iPhone 才不会自动放大页面 */
+/* 输入框字号 ≥16px，iPhone 才不会自动放大页面（所以这里不再缩小） */
 .field input, .field select {
   flex: 1; min-width: 0;
-  font-size: 17px; padding: 12px;
+  font-size: 16px; padding: 10px 12px;
   border-radius: 10px; border: 2px solid var(--line);
   background: var(--bg); color: var(--text);
   -webkit-appearance: none; appearance: none;
@@ -105,28 +105,28 @@ button { border: none; cursor: pointer; }
 
 .quick { display: flex; flex-wrap: wrap; gap: 8px; margin: -2px 0 12px calc(3.5em + 10px); }
 .quick:empty { display: none; }
-.quick button { padding: 8px 14px; border-radius: 999px; background: var(--butter); font-size: 15px; font-weight: 600; }
+.quick button { padding: 7px 12px; border-radius: 999px; background: var(--butter); font-size: 13px; font-weight: 600; }
 
-.preview { margin: 0 0 14px; font-size: 15px; color: var(--muted); }
+.preview { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
 .preview:empty { display: none; }
-.preview b { color: var(--accent); font-size: 20px; }
+.preview b { color: var(--accent); font-size: 17px; }
 
-.primary { width: 100%; padding: 15px; border-radius: 12px; background: var(--accent); color: var(--on-accent); font-size: 18px; font-weight: 700; }
+.primary { width: 100%; padding: 13px; border-radius: 12px; background: var(--accent); color: var(--on-accent); font-size: 16px; font-weight: 700; }
 
 /* ---------- 吃了什么 ---------- */
-.meal-head { display: flex; justify-content: space-between; font-size: 15px; font-weight: 700; margin: 16px 0 6px; padding-left: 10px; border-left: 5px solid var(--butter); }
+.meal-head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin: 16px 0 6px; padding-left: 10px; border-left: 5px solid var(--butter); }
 .meal-head:first-child { margin-top: 0; }
 .meal-head.m2 { border-color: var(--cinnamon); }
 .meal-head.m3 { border-color: var(--espresso); }
 .meal-head.m4 { border-color: var(--latte); }
 .item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
 .item-name { flex: 1; min-width: 0; }
-.item-name small { display: block; color: var(--muted); font-size: 14px; }
+.item-name small { display: block; color: var(--muted); font-size: 12px; }
 .item-kcal { font-weight: 700; color: var(--accent); white-space: nowrap; }
-.del { width: 36px; height: 36px; border-radius: 10px; background: transparent; color: var(--muted); font-size: 18px; }
+.del { width: 32px; height: 32px; border-radius: 9px; background: transparent; color: var(--muted); font-size: 16px; }
 
 /* ---------- 折叠卡片 ---------- */
-details summary { font-size: 19px; font-weight: 700; cursor: pointer; list-style: none; }
+details summary { font-size: 17px; font-weight: 700; cursor: pointer; list-style: none; }
 details summary::-webkit-details-marker { display: none; }
 details summary::after { content: '＋'; float: right; color: var(--accent); }
 details[open] summary::after { content: '－'; }
