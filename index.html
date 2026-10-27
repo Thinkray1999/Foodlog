@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <!-- 这一段和健身打卡一样：铺满屏幕 + 「添加到主屏幕」后全屏打开 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>饮食记录</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="饮食记录">
+  <meta name="theme-color" content="#f6efe6">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>饮食记录</h1>
+
+    <!-- 切换日期：可以看前几天、补记 -->
+    <div class="day-nav">
+      <button class="mini" id="prevDay" aria-label="前一天">‹</button>
+      <div id="dayTitle">今天</div>
+      <button class="mini" id="nextDay" aria-label="后一天">›</button>
+    </div>
+
+    <!-- 当天汇总：总热量 + 三大营养素 -->
+    <section class="card summary">
+      <div class="kcal"><span id="kcalNum">0</span><small> / <span id="kcalGoal">2000</span> 千卡</small></div>
+      <div class="bar big"><div class="bar-fill" id="kcalBar"></div></div>
+      <p class="hint" id="kcalLeft"></p>
+      <div class="macros" id="macros"></div>
+    </section>
+
+    <!-- 记一笔 -->
+    <section class="card">
+      <h2>记一笔</h2>
+      <div class="seg" id="meals"></div>
+      <label class="field">
+        <span>食物</span>
+        <select id="food"></select>
+      </label>
+      <label class="field">
+        <span>份量</span>
+        <input id="grams" type="number" inputmode="decimal" min="0" step="1" placeholder="填克数">
+        <span>克</span>
+      </label>
+      <div class="quick" id="quick"></div>
+      <p class="preview" id="preview"></p>
+      <button class="primary" id="addBtn">添加</button>
+      <p class="hint" id="hint"></p>
+    </section>
+
+    <!-- 当天吃了什么 -->
+    <section class="card">
+      <h2 id="listTitle">今天吃了</h2>
+      <div id="list"></div>
+    </section>
+
+    <!-- 自己添加食物（默认收起） -->
+    <details class="card">
+      <summary>自己添加食物</summary>
+      <p class="hint">看包装背面的「营养成分表」，按<b>每 100 克</b>填写</p>
+      <label class="field"><span>名称</span><input id="cName" type="text" placeholder="例如 某某燕麦奶"></label>
+      <label class="field">
+        <span>能量</span>
+        <input id="cKcal" type="number" inputmode="decimal" min="0">
+        <select id="cEnergyUnit" class="unit-select">
+          <option value="kcal">千卡</option>
+          <option value="kj">千焦</option>
+        </select>
+      </label>
+      <label class="field"><span>蛋白质</span><input id="cP" type="number" inputmode="decimal" min="0"><span>克</span></label>
+      <label class="field"><span>脂肪</span><input id="cF" type="number" inputmode="decimal" min="0"><span>克</span></label>
+      <label class="field"><span>碳水</span><input id="cC" type="number" inputmode="decimal" min="0"><span>克</span></label>
+      <button class="primary" id="cSave">保存这个食物</button>
+      <p class="hint" id="cHint"></p>
+      <div id="customList"></div>
+    </details>
+
+    <!-- 每日目标（默认收起） -->
+    <details class="card">
+      <summary>每日目标</summary>
+      <label class="field"><span>热量</span><input id="gKcal" type="number" inputmode="numeric" min="0"><span>千卡</span></label>
+      <label class="field"><span>蛋白质</span><input id="gP" type="number" inputmode="numeric" min="0"><span>克</span></label>
+      <label class="field"><span>脂肪</span><input id="gF" type="number" inputmode="numeric" min="0"><span>克</span></label>
+      <label class="field"><span>碳水</span><input id="gC" type="number" inputmode="numeric" min="0"><span>克</span></label>
+      <button class="primary" id="gSave">保存目标</button>
+      <p class="hint" id="gHint">每个人需要的量不一样，可以问问医生或营养师</p>
+    </details>
+  </main>
+
+  <script src="foods.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
