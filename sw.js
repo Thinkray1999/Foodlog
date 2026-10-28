@@ -1,5 +1,5 @@
 // 离线缓存：有网时总是拿最新文件（顺便存一份），没网时用存下来的那份
-const CACHE = 'foodlog-cache';
+const CACHE = 'foodlog-cache-v2';
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));

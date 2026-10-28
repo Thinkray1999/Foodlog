@@ -45,9 +45,18 @@ function allFoods() {
   for (const c of data.custom) {
     list.push({ key: 'c:' + c.name, group: '我加的', ...c });
   }
+  // 内置表是「每50克」的数值，这里统一乘 2 换成「每100克」，和自己加的食物同一个口径
   for (const g of FOOD_GROUPS) {
-    for (const [name, kcal, p, f, c, unit, unitG] of g.items) {
-      list.push({ key: 'b:' + name, group: g.group, name, kcal, p, f, c, unit, unitG });
+    for (const [name, kcal, p, f, c, note] of g.items) {
+      const isOil = name.includes('油');
+      const isEgg = name.startsWith('鸡蛋（') || name === '鸭蛋';
+      list.push({
+        key: 'b:' + name, group: g.group, name, note,
+        kcal: kcal * 2, p: p * 2, f: f * 2, c: c * 2,
+        // 快捷按钮：油按一勺 10 克，蛋按一个，其它按表格的一份 50 克
+        unit: isOil ? '勺' : isEgg ? '个' : '份',
+        unitG: isOil ? 10 : 50,
+      });
     }
   }
   return list;
@@ -192,6 +201,13 @@ function renderQuick() {
       renderPreview();
     };
     box.appendChild(b);
+  }
+  // 表格里的备注（比如「熟重50g」）显示在按钮旁边，提醒按生重还是熟重称
+  if (food && food.note) {
+    const s = document.createElement('span');
+    s.className = 'note';
+    s.textContent = food.note;
+    box.appendChild(s);
   }
   renderPreview();
 }

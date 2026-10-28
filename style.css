@@ -105,7 +105,9 @@ button { border: none; cursor: pointer; }
 
 .quick { display: flex; flex-wrap: wrap; gap: 8px; margin: -2px 0 12px calc(3.5em + 10px); }
 .quick:empty { display: none; }
-.quick button { padding: 7px 12px; border-radius: 999px; background: var(--butter); font-size: 13px; font-weight: 600; }
+.quick { align-items: center; }
+.quick .note { font-size: 12px; color: var(--muted); }
+.quick button {padding: 7px 12px; border-radius: 999px; background: var(--butter); font-size: 13px; font-weight: 600; }
 
 .preview { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
 .preview:empty { display: none; }
